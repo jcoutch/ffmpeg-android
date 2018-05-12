@@ -2,7 +2,9 @@
 
 . abi_settings.sh $1 $2 $3
 
-pushd expat
+pushd expat/expat
+
+./buildconf.sh
 
 make clean
 
@@ -12,6 +14,7 @@ make clean
   --host="$NDK_TOOLCHAIN_ABI" \
   --enable-static \
   --disable-shared \
+  --with-docbook \
   --prefix="${TOOLCHAIN_PREFIX}" || exit 1
 
 make -j${NUMBER_OF_CORES} install || exit 1

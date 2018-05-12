@@ -4,6 +4,7 @@
 
 pushd fribidi
 
+# Do a git clean as a precaution
 make clean
 
 autoreconf -ivf
@@ -17,6 +18,6 @@ autoreconf -ivf
   --with-glib=no \
   --prefix="${TOOLCHAIN_PREFIX}" || exit 1
 
-make -j${NUMBER_OF_CORES} install || exit 1
+make -j${NUMBER_OF_CORES} -C lib install || exit 1
 
 popd

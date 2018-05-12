@@ -4,7 +4,8 @@
 
 pushd libpng
 
-make clean
+# Since there's no 'clean' target for libpng, just do a git clean
+git clean -fdx
 
 ARM_NEON="no"
 case $1 in
@@ -12,6 +13,8 @@ case $1 in
     ARM_NEON="yes"
     ;;
 esac
+
+./autogen.sh
 
 ./configure \
   --with-pic \
