@@ -1,9 +1,6 @@
 *.o
 build
 toolchain-*
-libpng-*
-expat-*
-fribidi-*
 lame-*
 
 # Created by http://www.gitignore.io
