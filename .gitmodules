@@ -22,3 +22,6 @@
 [submodule "fribidi"]
 	path = fribidi
 	url = https://github.com/fribidi/fribidi.git
+[submodule "zlib"]
+	path = zlib
+	url = https://github.com/madler/zlib.git

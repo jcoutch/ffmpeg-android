@@ -20,4 +20,7 @@ autoreconf -ivf
 
 make -j${NUMBER_OF_CORES} -C lib install || exit 1
 
+# Since '-C lib' doesn't install the pkg-config file, do it manually
+cp fribidi.pc
+
 popd
