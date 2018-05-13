@@ -15,7 +15,7 @@ esac
 
 # Inject the Newtek NDI includes if enabled
 if [ "$NEWTEK_NDI_ENABLED" = "yes" ]; then
- CFLAGS="$CFLAGS -I${NEWTEK_NDI_SDK_ROOT_PATH}/include"
+ CFLAGS="$CFLAGS -I${NEWTEK_NDI_SDK_ROOT_PATH}/include -Wl,-Bstatic -l:libndi.so.3"
  LDFLAGS="$LDFLAGS -L${NEWTEK_NDI_SDK_ROOT_PATH}/lib/arm-linux-gnueabi"
 fi
 
