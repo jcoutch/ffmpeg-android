@@ -35,11 +35,9 @@ sudo apt-get --quiet --yes install build-essential git subversion autoconf libto
 git submodule update --recursive --remote
 svn up lame-svn
 ```
-* The only module that
-
-* Find the executable binary in `build` directory.
+* The compiled executables will be stored in the `/build` directory.
 * If you want to use FONTCONFIG then you need to specify your custom fontconfig config file (e.g - "FONTCONFIG_FILE=/sdcard/fonts.conf ./ffmpeg --version", where /sdcard/fonts.conf is location of your FONTCONFIG configuration file).
 
 License
 ----
-  check files LICENSE.GPLv3 and LICENSE
+  Licenses for this repo are in [LICENSE.GPLv3](https://github.com/jcoutch/ffmpeg-android/blob/master/LICENSE.GPLv3) and [LICENSE](https://github.com/jcoutch/ffmpeg-android/blob/master/LICENSE).
