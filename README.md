@@ -5,8 +5,12 @@ This repo updates the work done in [WritingMinds/ffmpeg-android](https://github.
 
 * FFmpeg for Android compiled with x264, libass, fontconfig, freetype and fribidi
 * All libraries are pulled down as git submodules or from svn (as is the case for Lame)
-* FFmpeg can be optionally compiled with libnewtek_ndi (output support only on ARM)
+* FFmpeg can be optionally compiled with libnewtek_ndi (doesn't work...see below)
 * Supports Android L
+
+Note about libnewtek_ndi
+----
+Unfortunately, the version of `libndi` provided by NewTek wasn't compiled with the Android NDK, and has a dependency to pthread, which isn't available on Android.  I'm leaving support for it in the scripts...just in case NewTek releases updated libraries in a future SDK.
 
 Supported Architecture
 ----
