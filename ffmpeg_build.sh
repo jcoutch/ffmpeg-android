@@ -13,7 +13,15 @@ case $1 in
   ;;
 esac
 
+# Inject the Newtek NDI includes if enabled
+if [ "$NEWTEK_NDI_ENABLED" = "yes" ]; then
+ CFLAGS="$CFLAGS -I${NEWTEK_NDI_SDK_ROOT_PATH}/include"
+ LDFLAGS="$LDFLAGS -L${NEWTEK_NDI_SDK_ROOT_PATH}/lib/arm-linux-gnueabi"
+fi
+
 make clean
+
+PKG_CONFIG_PATH=${TOOLCHAIN_PREFIX}/lib/pkgconfig
 
 ./configure \
 --target-os="$TARGET_OS" \
@@ -31,7 +39,6 @@ make clean
 --enable-fontconfig \
 --enable-pthreads \
 --disable-debug \
---disable-ffserver \
 --enable-version3 \
 --enable-hardcoded-tables \
 --disable-ffplay \
@@ -45,8 +52,11 @@ make clean
 --prefix="${2}/build/${1}" \
 --extra-cflags="-I${TOOLCHAIN_PREFIX}/include $CFLAGS" \
 --extra-ldflags="-L${TOOLCHAIN_PREFIX}/lib $LDFLAGS" \
---extra-libs="-lpng -lexpat -lm" \
---extra-cxxflags="$CXX_FLAGS" || exit 1
+--extra-libs="-lpng -lexpat -lm -lz" \
+--extra-cxxflags="$CXX_FLAGS" \
+$([ "$NEWTEK_NDI_ENABLED" = "yes" ] && echo "--enable-libndi_newtek --enable-nonfree") || exit 1
+
+#--enable-outdev="libndi_newtek" \
 
 make -j${NUMBER_OF_CORES} && make install || exit 1
 
